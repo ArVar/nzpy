@@ -2073,7 +2073,7 @@ class Connection():
                 
             if fldtype == NzTypeNChar or fldtype == NzTypeNVarChar:
                 cursize  = int.from_bytes(fieldDataP[0:2], 'little') - 2
-                value = str(fieldDataP[2:cursize+2], self._client_encoding)
+                value = fieldDataP[2:cursize+2]
                 row.append(value)
                 self.log.debug("field=%d, datatype=%s, value=%s", cur_field+1,dataType[fldtype], value)                
                 

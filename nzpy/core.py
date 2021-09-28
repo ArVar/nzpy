@@ -2073,13 +2073,13 @@ class Connection():
                 
             if fldtype == NzTypeNChar or fldtype == NzTypeNVarChar:
                 cursize  = int.from_bytes(fieldDataP[0:2], 'little') - 2
-                value = str(fieldDataP[2:cursize+2]).encode(encoding=self._char_varchar_encoding)
+                value = fieldDataP[2:cursize+2]
                 row.append(value)
                 self.log.debug("field=%d, datatype=%s, value=%s", cur_field+1,dataType[fldtype], value)                
                 
             if fldtype == NzTypeVarChar or fldtype == NzTypeVarFixedChar or fldtype == NzTypeGeometry or fldtype == NzTypeVarBinary or fldtype == NzTypeJson or fldtype == NzTypeJsonb or fldtype == NzTypeJsonpath:
                 cursize  = int.from_bytes(fieldDataP[0:2], 'little') - 2
-                value = str(fieldDataP[2:cursize+2]).encode(encoding=self._char_varchar_encoding)
+                value = fieldDataP[2:cursize+2]
                 row.append(value)
                 self.log.debug("field=%d, datatype=%s, value=%s", cur_field+1,dataType[fldtype], value)
                 
